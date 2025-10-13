@@ -1,0 +1,63 @@
+apiVersion: v1
+entries:
+  gpu-operator:
+  - apiVersion: v2
+    created: "2025-10-13T10:13:09.75476253+08:00"
+    dependencies:
+    - condition: gpu-operator.enabled
+      name: gpu-operator
+      repository: ""
+      version: v25.3.2
+    - condition: hami.enabled
+      name: hami
+      repository: ""
+      version: 2.6.1
+    description: Phison GPU operator
+    digest: 11f3d3d41bfc485c2c37d1361126f97b9c1c2447a420bb6d10e84dadc95b7cec
+    keywords:
+    - vgpu
+    - gpu
+    - compute
+    kubeVersion: '>= 1.30.0'
+    maintainers:
+    - email: bryant_chu@phison.com
+      name: infra-team
+    - email: terry_wu@phison.com
+      name: terry
+    name: gpu-operator
+    urls:
+    - gpu-operator-1.0.4.tgz
+    version: 1.0.4
+  otterscale:
+  - apiVersion: v2
+    created: "2025-10-13T10:13:09.763472299+08:00"
+    dependencies:
+    - condition: gatekeeper.enabled
+      name: gatekeeper
+      repository: ""
+      version: 3.20.1
+    - condition: kong.enabled
+      name: kong
+      repository: ""
+      version: 2.52.0
+    description: OtterScale
+    digest: 13e70abc7ea931c784a984b02b8eccc91f6464c203c9677e1dbb3d48be4d4f2d
+    keywords:
+    - kubernetes
+    - containers
+    - virtualization
+    - storage
+    - gpu-management
+    - maas
+    - juju
+    - ceph
+    - aidaptiv-cache
+    kubeVersion: '>= 1.30.0'
+    maintainers:
+    - email: terrywu25@gmail.com
+      name: terry
+    name: otterscale
+    urls:
+    - otterscale-0.6.0.tgz
+    version: 0.6.0
+generated: "2025-10-13T10:13:09.750667254+08:00"
