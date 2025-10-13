@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "otterscale.fullname" . }}-web
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "otterscale.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+spec:
+  replicas: {{ .Values.otterscaleWeb.replicas }}
+  selector:
+    matchLabels:
+      {{- include "otterscale.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: frontend
+  template:
+    metadata:
+      labels:
+        {{- include "otterscale.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: frontend
+        {{- if and .Values.istio.enabled .Values.istio.sidecarInjection.enabled }}
+        sidecar.istio.io/inject: "true"
+        {{- end }}
+      annotations:
+        checksum/secret: {{ include (print $.Template.BasePath "/postgres-secret.yaml") . | sha256sum }}
+        {{- with .Values.otterscaleWeb.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      # Init container to wait for PostgreSQL to be ready
+      initContainers:
+        - name: wait-for-postgres
+          image: postgres:15
+          command:
+            - sh
+            - -c
+            - |
+              until pg_isready -h {{ include "otterscale.fullname" . }}-postgres -p 5432 -U {{ .Values.postgres.user }}; do
+                echo "Waiting for PostgreSQL to be ready..."
+                sleep 2
+              done
+              echo "PostgreSQL is ready!"
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "otterscale.fullname" . }}-postgres
+                  key: postgres-password
+      containers:
+        - name: otterscale-web
+          image: "{{ .Values.otterscaleWeb.image.repository }}:{{ .Values.otterscaleWeb.image.tag | default .Values.appVersion }}"
+          imagePullPolicy: {{ .Values.otterscaleWeb.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "otterscale.fullname" . }}-postgres
+                  key: postgres-url
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "otterscale.fullname" . }}-postgres
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "otterscale.fullname" . }}-postgres
+                  key: postgres-password
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "otterscale.fullname" . }}-postgres
+                  key: postgres-db
+            - name: PUBLIC_URL
+              value: {{ .Values.otterscaleWeb.env.publicUrl | quote }}
+            - name: PUBLIC_API_URL
+              value: {{ if .Values.otterscaleWeb.env.publicApiUrl }}{{ .Values.otterscaleWeb.env.publicApiUrl | quote }}{{ else }}"http://{{ include "otterscale.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:8299"{{ end }}
+            - name: AUTH_SECRET
+              value: {{ .Values.otterscaleWeb.env.authSecret | quote }}
+            - name: AUTH_TRUSTED_PROVIDERS
+              value: {{ .Values.otterscaleWeb.env.authTrustedProviders | quote }}
+            - name: AUTH_OIDC_PROVIDER
+              value: {{ .Values.otterscaleWeb.env.authOidcProvider | quote }}
+            - name: GITHUB_CLIENT_ID
+              value: {{ .Values.otterscaleWeb.env.githubClientId | quote }}
+            - name: GITHUB_CLIENT_SECRET
+              value: {{ .Values.otterscaleWeb.env.githubClientSecret | quote }}
+            - name: GITHUB_ACCESS_TOKEN
+              value: {{ .Values.otterscaleWeb.env.githubAccessToken | quote }}
+            - name: SSO_LOGIN_PROMPT
+              value: {{ .Values.otterscaleWeb.env.ssoLoginPrompt | quote }}
+          resources:
+            {{- toYaml .Values.otterscaleWeb.resources | nindent 12 }}
+      {{- with .Values.otterscaleWeb.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.otterscaleWeb.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.otterscaleWeb.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
