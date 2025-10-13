@@ -26,7 +26,7 @@ entries:
       name: terry
     name: gpu-operator
     urls:
-    - https://github.com/otterscale/otterscale-charts/charts/gpu-operator-1.0.5.tgz
+    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/gpu-operator-1.0.5.tgz
     version: 1.0.5
   otterscale:
   - apiVersion: v2
@@ -58,6 +58,6 @@ entries:
       name: terry
     name: otterscale
     urls:
-    - https://github.com/otterscale/otterscale-charts/charts/otterscale-0.6.0.tgz
+    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/otterscale-0.6.0.tgz
     version: 0.6.0
 generated: "2025-10-13T11:08:49.417696424+08:00"
