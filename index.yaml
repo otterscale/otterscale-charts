@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   gpu-operator:
   - apiVersion: v2
-    created: "2025-10-13T10:13:09.75476253+08:00"
+    created: "2025-10-13T10:57:15.518730483+08:00"
     dependencies:
     - condition: gpu-operator.enabled
       name: gpu-operator
@@ -26,11 +26,11 @@ entries:
       name: terry
     name: gpu-operator
     urls:
-    - gpu-operator-1.0.4.tgz
+    - https://github.com/otterscale/otterscale-charts/charts/gpu-operator-1.0.4.tgz
     version: 1.0.4
   otterscale:
   - apiVersion: v2
-    created: "2025-10-13T10:13:09.763472299+08:00"
+    created: "2025-10-13T10:57:15.527637601+08:00"
     dependencies:
     - condition: gatekeeper.enabled
       name: gatekeeper
@@ -58,6 +58,6 @@ entries:
       name: terry
     name: otterscale
     urls:
-    - otterscale-0.6.0.tgz
+    - https://github.com/otterscale/otterscale-charts/charts/otterscale-0.6.0.tgz
     version: 0.6.0
-generated: "2025-10-13T10:13:09.750667254+08:00"
+generated: "2025-10-13T10:57:15.514914354+08:00"
