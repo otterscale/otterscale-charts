@@ -1,2 +1,2 @@
 index:
-	helm repo index --url https://github.com/otterscale/otterscale-charts ./
+	helm repo index --url https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/ ./
