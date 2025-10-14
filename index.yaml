@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   gpu-operator:
   - apiVersion: v2
-    created: "2025-10-13T11:30:30.457028143+08:00"
+    created: "2025-10-14T16:36:12.930646995+08:00"
     dependencies:
     - condition: gpu-operator.enabled
       name: gpu-operator
@@ -30,7 +30,7 @@ entries:
     version: 1.0.5
   otterscale:
   - apiVersion: v2
-    created: "2025-10-13T11:30:30.465483711+08:00"
+    created: "2025-10-14T16:36:12.937645419+08:00"
     dependencies:
     - condition: gatekeeper.enabled
       name: gatekeeper
@@ -41,7 +41,7 @@ entries:
       repository: ""
       version: 2.52.0
     description: OtterScale
-    digest: 13e70abc7ea931c784a984b02b8eccc91f6464c203c9677e1dbb3d48be4d4f2d
+    digest: 625632ce33ea2c9a257a6d83b0b458027a233f874da9cb2d1107149beace6d6e
     keywords:
     - kubernetes
     - containers
@@ -58,6 +58,6 @@ entries:
       name: terry
     name: otterscale
     urls:
-    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/otterscale-0.6.0.tgz
-    version: 0.6.0
-generated: "2025-10-13T11:30:30.452897437+08:00"
+    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/otterscale-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-10-14T16:36:12.927145188+08:00"
