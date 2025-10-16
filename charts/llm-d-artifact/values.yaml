@@ -1,5 +1,4 @@
-commonLabels:
-  otterscale.com/modelartifact: ""
+commonLabels: {}
 
 modelname: "" # REQUIRED e.g. RedHatAI/Qwen3-0.6B-FP8-dynamic
 
