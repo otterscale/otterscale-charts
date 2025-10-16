@@ -3,10 +3,7 @@ kind: ConfigMap
 metadata:
   name: modelartifact-script
   labels: 
-    {{- if .Values.pvc.labels }}
-    {{- include "common.tplvalues.render" ( dict "value" .Values.pvc.labels "context" .) | nindent 4 }}
-    {{- end }}
-    otterscale.com/modelartifact: {{ include "ma.model.label" . }} 
+    {{- toYaml (default dict .Values.commonLabels) | nindent 4 }}
 data:
   download_with_eta.py: |
     # download_with_eta.py
@@ -72,7 +69,7 @@ data:
         last_t = start
 
         while not done["flag"]:
-            cur = scan_bytes(args.cache_dir)
+            cur = scan_bytes(args.local_dir)
             now = time.time()
             dt = max(now - last_t, 1e-6)
             speed = (cur - last_bytes) / dt

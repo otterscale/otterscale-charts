@@ -3,15 +3,16 @@ kind: Job
 metadata:
   name: {{ .Values.pvc.name }} 
   labels: 
-    otterscale.com/modelartifact: {{ include "ma.model.label" . }}  
+    {{- toYaml (default dict .Values.commonLabels) | nindent 4 }}
 spec:
   template:
+    metadata:
+      labels: 
+        {{- toYaml (default dict .Values.commonLabels) | nindent 8 }}
     spec:
       restartPolicy: Never
       containers:
         - name: {{ .Values.pvc.name }} 
-          labels: 
-            otterscale.com/modelartifact: {{ include "ma.model.label" . }}  
           image: python:3.11-slim
           env:
             - name: PYTHONUNBUFFERED

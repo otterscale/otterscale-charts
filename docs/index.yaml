@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   gpu-operator:
   - apiVersion: v2
-    created: "2025-10-16T15:52:55.741628278+08:00"
+    created: "2025-10-16T08:30:33.732777217Z"
     dependencies:
     - condition: gpu-operator.enabled
       name: gpu-operator
@@ -13,7 +13,7 @@ entries:
       repository: ""
       version: 2.6.1
     description: GPU operator
-    digest: ae214214772b12ce496b4338723f99b4191b7e83a06ba309fdd9c4cd544393cb
+    digest: 9ba78899516f7a47f1c4454c89e2fb75ea0bf99a8fb1a0252a9b04e811286072
     keywords:
     - vgpu
     - gpu
@@ -30,7 +30,7 @@ entries:
     version: 1.0.5
   infra:
   - apiVersion: v2
-    created: "2025-10-16T15:52:55.74774512+08:00"
+    created: "2025-10-16T08:30:33.748211391Z"
     dependencies:
     - condition: gatekeeper.enabled
       name: gatekeeper
@@ -41,7 +41,7 @@ entries:
       repository: ""
       version: 2.52.0
     description: A Helm chart for OtterScale K8S management
-    digest: d67917312ace6699b2096bff06af873f5bd2f9a24195aecc889f9321b2168ce0
+    digest: 25d93cbc52741c7fd31d3f1b4883d5f05985df563f75f373d53eb3ab86cd50a7
     keywords:
     - kubernetes
     - containers
@@ -63,9 +63,9 @@ entries:
   llm-d-artifact:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-16T15:52:55.748273481+08:00"
+    created: "2025-10-16T08:30:33.749689223Z"
     description: A Helm chart for Kubernetes
-    digest: a6061c627b0b540312a8227758f5b31e1fc08f11a17e22eb6e323c41de19879e
+    digest: 8584622a9618fb67bf46b1c1ff921e228e57e266de7f78ff22eb7f82fc648294
     name: llm-d-artifact
     type: application
     urls:
@@ -73,9 +73,9 @@ entries:
     version: 0.1.0
   otterscale:
   - apiVersion: v2
-    created: "2025-10-16T15:52:55.748680029+08:00"
+    created: "2025-10-16T08:30:33.750862966Z"
     description: A Helm chart for OtterScale
-    digest: 8b89aec15583a8fee8d90045625a4d7e412c9ede4842937d415a5db4a9a4b136
+    digest: 10f660b579f601c562684ef114be793fee158041a62aa03e224a4e4c7274a81d
     keywords:
     - kubernetes
     - containers
@@ -94,4 +94,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/docs/otterscale-0.1.3.tgz
     version: 0.1.3
-generated: "2025-10-16T15:52:55.737641258+08:00"
+generated: "2025-10-16T08:30:33.719003916Z"
