@@ -32,7 +32,6 @@ spec:
           args:
             - |
               pip install --no-cache-dir "huggingface-hub>=0.23,<1" hf_transfer && \
-              python -c "import time; time.sleep(86400);" && \
               python -u /app/download_with_eta.py \
                 --repo $MODEL \
                 --rev main \
