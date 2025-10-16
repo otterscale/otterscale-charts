@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.pvc.name }} 
+  labels: 
+    otterscale.com/modelartifact: {{ include "ma.model.label" . }}  
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: {{ .Values.pvc.name }} 
+          labels: 
+            otterscale.com/modelartifact: {{ include "ma.model.label" . }}  
+          image: python:3.11-slim
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"                    # flush logs immediately
+            # Optional: speed up downloads if you install hf_transfer (see below)
+            - name: HF_HUB_ENABLE_HF_TRANSFER
+              value: "1"
+            # Optional: private repos
+            # - name: HF_TOKEN
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: hf-token
+            #       key: token
+            - name: MODEL
+              value: {{ .Values.modelname }} #RedHatAI/Qwen3-0.6B-FP8-dynamic
+          command: ["bash", "-lc"]
+          args:
+            - |
+              pip install --no-cache-dir "huggingface-hub>=0.23,<1" hf_transfer && \
+              python -c "import time; time.sleep(86400);" && \
+              python -u /app/download_with_eta.py \
+                --repo $MODEL \
+                --rev main \
+                --local-dir /model \
+                --cache-dir /cache/hf \
+                --interval 3
+          volumeMounts:
+            - name: app
+              mountPath: /app
+            - name: cache
+              mountPath: /cache
+            - name: model
+              mountPath: /model
+      volumes:
+        - name: app
+          configMap:
+            name: modelartifact-script
+        - name: cache
+          emptyDir: {}
+        - name: model
+          persistentVolumeClaim:
+            claimName: {{ .Values.pvc.name }} 

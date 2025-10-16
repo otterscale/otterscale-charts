@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.pvc.name }} 
+  labels: 
+    {{- if .Values.pvc.labels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.pvc.labels "context" .) | nindent 4 }}
+    {{- end }}
+    otterscale.com/modelartifact: {{ include "ma.model.label" . }} 
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+    {{- range .Values.pvc.accessModes }}
+    - {{ . }}
+    {{- end }}
+  {{- if .Values.pvc.storageClassName }}
+  storageClassName: {{ .Values.pvc.storageClassName }}
+  {{- end }} 
+  resources:
+    requests:
+      storage: {{ .Values.pvc.size }} 

@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   gpu-operator:
   - apiVersion: v2
-    created: "2025-10-15T11:11:54.084037334+08:00"
+    created: "2025-10-16T10:43:51.616056016+08:00"
     dependencies:
     - condition: gpu-operator.enabled
       name: gpu-operator
@@ -28,9 +28,20 @@ entries:
     urls:
     - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/gpu-operator-1.0.5.tgz
     version: 1.0.5
+  llm-d-artifact:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-16T10:43:51.616839232+08:00"
+    description: A Helm chart for Kubernetes
+    digest: d462e901e9b43cb0978d67ce501c87c6cfbcdd40d8143f1b95fa8d88e6e0c88c
+    name: llm-d-artifact
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/llm-d-artifact-0.1.0.tgz
+    version: 0.1.0
   otterscale:
   - apiVersion: v2
-    created: "2025-10-15T11:11:54.090637147+08:00"
+    created: "2025-10-16T10:43:51.623466717+08:00"
     dependencies:
     - condition: gatekeeper.enabled
       name: gatekeeper
@@ -41,7 +52,7 @@ entries:
       repository: ""
       version: 2.52.0
     description: OtterScale
-    digest: 3905501990827744c8dd883dd661eabc1144d5bbef0eb3e1a3c55697f5f16abf
+    digest: aa2a34bef0b42f7552e463f4fb19423e73bfb92d4538ab8b73b3dfc3f8257711
     keywords:
     - kubernetes
     - containers
@@ -58,6 +69,6 @@ entries:
       name: terry
     name: otterscale
     urls:
-    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/otterscale-0.1.1.tgz
-    version: 0.1.1
-generated: "2025-10-15T11:11:54.080318838+08:00"
+    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/charts/otterscale-0.1.2.tgz
+    version: 0.1.2
+generated: "2025-10-16T10:43:51.612776645+08:00"
