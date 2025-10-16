@@ -53,7 +53,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: config
-              mountPath: /etc/app/otterscale.yaml
+              mountPath: /app/otterscale.yaml
               subPath: otterscale.yaml
               readOnly: true
           resources:
