@@ -1,4 +1,13 @@
 apiVersion: v2
+dependencies:
+- condition: gatekeeper.enabled
+  name: gatekeeper
+  repository: ""
+  version: 3.20.1
+- condition: kong.enabled
+  name: kong
+  repository: ""
+  version: 2.52.0
 description: OtterScale
 keywords:
 - kubernetes
@@ -14,5 +23,5 @@ kubeVersion: '>= 1.30.0'
 maintainers:
 - email: terrywu25@gmail.com
   name: terry
-name: otterscale
-version: 0.1.3
+name: infra
+version: 0.1.0
