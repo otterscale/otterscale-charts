@@ -8,7 +8,7 @@ dependencies:
   name: kong
   repository: ""
   version: 2.52.0
-description: OtterScale
+description: A Helm chart for OtterScale K8S management
 keywords:
 - kubernetes
 - containers

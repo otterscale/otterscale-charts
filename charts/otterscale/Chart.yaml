@@ -1,5 +1,5 @@
 apiVersion: v2
-description: OtterScale
+description: A Helm chart for OtterScale
 keywords:
 - kubernetes
 - containers
