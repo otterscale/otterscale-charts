@@ -153,6 +153,7 @@ otterscaleWeb:
     port: 3000
     # Additional service annotations
     annotations: {}
+    nodePort: 30000
   
   resources:
     requests:
