@@ -169,7 +169,7 @@ otterscaleWeb:
     # Public URL for the web application
     # Corresponds to PUBLIC_URL in environment configuration
     # Must match the actual URL users will use to access the application
-    publicUrl: "http://localhost:3000"
+    publicUrl: ""
     
     # Public API URL for backend service
     # Corresponds to PUBLIC_API_URL in environment configuration
