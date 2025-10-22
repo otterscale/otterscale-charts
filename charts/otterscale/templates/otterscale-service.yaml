@@ -16,7 +16,7 @@ spec:
     {{- include "otterscale.selectorLabels" . | nindent 4 }}
     app.kubernetes.io/component: backend
   ports:
-    - name: http
+    - name: connectrpc
       port: {{ .Values.otterscale.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.otterscale.service.targetPort }}
       protocol: TCP

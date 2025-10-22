@@ -85,6 +85,7 @@ otterscale:
   service:
     type: ClusterIP
     port: 8299
+    targetPort: 8299
     # Additional service annotations
     annotations: {}
   
@@ -151,9 +152,10 @@ otterscaleWeb:
   service:
     type: ClusterIP
     port: 3000
+    targetPort: 3000
     # Additional service annotations
     annotations: {}
-    nodePort: 30000
+    nodePort: ""
   
   resources:
     requests:
@@ -169,12 +171,12 @@ otterscaleWeb:
     # Public URL for the web application
     # Corresponds to PUBLIC_URL in environment configuration
     # Must match the actual URL users will use to access the application
-    publicUrl: ""
+    publicUrl: "http://172.20.10.7/"
     
     # Public API URL for backend service
     # Corresponds to PUBLIC_API_URL in environment configuration
     # Must include protocol (http/https) and port number
-    publicApiUrl: ""
+    publicApiUrl: "http://172.20.10.7/api"
     
     # Secret key for authentication (generate a strong random string)
     # Corresponds to AUTH_SECRET in environment configuration
@@ -268,3 +270,65 @@ dockerRegistry:
     runAsNonRoot: false
     runAsUser: 0
     fsGroup: 0
+
+# -----------------------------------------------------------------------------
+# Istio Configuration
+# -----------------------------------------------------------------------------
+istio:
+  # Enable or disable Istio integration
+  # When enabled, will install Istio base + istiod via Helm dependencies
+  enabled: true
+  
+  # Automatic sidecar injection
+  # If true, enables automatic sidecar injection for the namespace
+  sidecarInjection:
+    enabled: true
+
+  # Gateway configuration for external traffic
+  gateway:
+    enabled: true
+    name: otterscale-gateway
+    servers:
+      # HTTP server
+      - port:
+          number: 80
+          name: http
+          protocol: HTTP
+        # List of hosts that the gateway should serve
+        hosts:
+          - "*"
+        # Optional: redirect HTTP to HTTPS
+        # tls:
+        #   httpsRedirect: true
+
+      # HTTPS server (uncomment and configure for TLS)
+      # - port:
+      #     number: 443
+      #     name: https
+      #     protocol: HTTPS
+      #   hosts:
+      #     - "otterscale.example.com"
+      #   tls:
+      #     mode: SIMPLE
+      #     credentialName: otterscale-tls-cert
+  
+  # VirtualService configuration for traffic routing
+  virtualService:
+    enabled: true
+
+  # Destination rules for traffic policies (optional)
+  destinationRule:
+    enabled: false
+    # Connection pool settings
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 100
+        http2MaxRequests: 100
+    # Outlier detection for circuit breaking
+    outlierDetection:
+      consecutiveErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50      

@@ -18,7 +18,7 @@ spec:
   ports:
     - name: http
       port: {{ .Values.otterscaleWeb.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.otterscaleWeb.service.targetPort }}
       protocol: TCP
       {{- if eq .Values.otterscaleWeb.service.type "NodePort" }}
       nodePort: {{ .Values.otterscaleWeb.service.nodePort }}

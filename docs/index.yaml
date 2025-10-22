@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   gpu-operator:
   - apiVersion: v2
-    created: "2025-10-22T09:05:09.713855618Z"
+    created: "2025-10-22T19:51:52.024608985+08:00"
     dependencies:
     - condition: gpu-operator.enabled
       name: gpu-operator
@@ -30,7 +30,7 @@ entries:
     version: 1.0.5
   infra:
   - apiVersion: v2
-    created: "2025-10-22T09:05:09.730134151Z"
+    created: "2025-10-22T19:51:52.031009576+08:00"
     dependencies:
     - condition: gatekeeper.enabled
       name: gatekeeper
@@ -63,7 +63,7 @@ entries:
   llm-d-artifact:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-22T09:05:09.731026457Z"
+    created: "2025-10-22T19:51:52.031647037+08:00"
     description: A Helm chart for Kubernetes
     digest: 28fd733b366898911416a8edf10b313131aeeb36fa4d5ae93d2f1965d1b0f8c4
     name: llm-d-artifact
@@ -73,7 +73,29 @@ entries:
     version: 0.1.0
   otterscale:
   - apiVersion: v2
-    created: "2025-10-22T09:05:09.731660287Z"
+    created: "2025-10-22T19:51:52.032800827+08:00"
+    description: A Helm chart for OtterScale
+    digest: fcfa0f63b900bfe9ff8afdd73e39c922e63deb79492afa44b2bb00211487636c
+    keywords:
+    - kubernetes
+    - containers
+    - virtualization
+    - storage
+    - gpu-management
+    - maas
+    - juju
+    - ceph
+    - aidaptiv-cache
+    kubeVersion: '>= 1.30.0'
+    maintainers:
+    - email: terrywu25@gmail.com
+      name: terry
+    name: otterscale
+    urls:
+    - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/docs/otterscale-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    created: "2025-10-22T19:51:52.032188563+08:00"
     description: A Helm chart for OtterScale
     digest: 66b9e7787e5817ffe4f2aa71abae22630e1abd95e1a07c153fe75e966d7a3845
     keywords:
@@ -94,4 +116,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/otterscale/otterscale-charts/refs/heads/main/docs/otterscale-0.1.4.tgz
     version: 0.1.4
-generated: "2025-10-22T09:05:09.706631976Z"
+generated: "2025-10-22T19:51:52.020779793+08:00"

@@ -1,0 +1,34 @@
+{{- if and .Values.istio.enabled .Values.istio.virtualService.enabled }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ include "otterscale.fullname" . }}-web
+  namespace: istio-system
+  labels:
+    {{- include "otterscale.labels" . | nindent 4 }}
+    app.kubernetes.io/component: frontend
+spec:
+  hosts:
+  - "*"
+  gateways:
+    - {{ $.Values.istio.gateway.name }}
+  http:
+    - match:
+      - uri:
+          prefix: /api/
+      rewrite:
+          uri: /
+      route:
+      - destination:
+          host: {{ include "otterscale.fullname" $ }}.{{ .Release.Namespace }}.svc.cluster.local
+          port:
+            number: {{ $.Values.otterscale.service.port }}
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          host: {{ include "otterscale.fullname" $ }}-web.{{ .Release.Namespace }}.svc.cluster.local
+          port:
+            number: {{ $.Values.otterscaleWeb.service.port }}
+{{- end }}

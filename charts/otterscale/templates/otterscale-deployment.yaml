@@ -17,6 +17,9 @@ spec:
       labels:
         {{- include "otterscale.selectorLabels" . | nindent 8 }}
         app.kubernetes.io/component: backend
+        {{- if and .Values.istio.enabled .Values.istio.sidecarInjection.enabled }}
+        sidecar.istio.io/inject: "true"
+        {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/otterscale-configmap.yaml") . | sha256sum }}
         {{- with .Values.otterscale.podAnnotations }}
@@ -53,7 +56,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: config
-              mountPath: /app/otterscale.yaml
+              mountPath: /etc/app/otterscale.yaml
               subPath: otterscale.yaml
               readOnly: true
           resources:
