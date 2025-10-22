@@ -35,7 +35,7 @@ spec:
               python -u /app/download_with_eta.py \
                 --repo $MODEL \
                 --rev main \
-                --local-dir /model \
+                --local-dir /model/model \
                 --cache-dir /cache/hf \
                 --interval 3
           volumeMounts:
