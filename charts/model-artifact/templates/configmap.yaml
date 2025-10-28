@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: modelartifact-script
+  name: {{ .Values.pvc.name }} 
   labels: 
     {{- toYaml (default dict .Values.commonLabels) | nindent 4 }}
 data:

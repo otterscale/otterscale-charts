@@ -1,6 +1,7 @@
 commonLabels: {}
 
-modelname: "" # REQUIRED e.g. RedHatAI/Qwen3-0.6B-FP8-dynamic
+model:
+  Name: "" # REQUIRED e.g. RedHatAI/Qwen3-0.6B-FP8-dynamic
 
 pvc:
   name: "" # REQUIRED: PVC name to create & mount

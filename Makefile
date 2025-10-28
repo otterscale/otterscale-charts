@@ -1,7 +1,7 @@
 package:
 	helm package charts/otterscale --destination docs/
 	helm package charts/infra --destination docs/
-	helm package charts/llm-d-artifact --destination docs/
+	helm package charts/model-artifact --destination docs/
 	helm package charts/gpu-operator --destination docs/
 
 index:

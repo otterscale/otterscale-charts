@@ -27,7 +27,7 @@ spec:
             #       name: hf-token
             #       key: token
             - name: MODEL
-              value: {{ .Values.modelname }} #RedHatAI/Qwen3-0.6B-FP8-dynamic
+              value: {{ .Values.model.Name }} #RedHatAI/Qwen3-0.6B-FP8-dynamic
           command: ["bash", "-lc"]
           args:
             - |
@@ -48,7 +48,7 @@ spec:
       volumes:
         - name: app
           configMap:
-            name: modelartifact-script
+            name: {{ .Values.pvc.name }} 
         - name: cache
           emptyDir: {}
         - name: model
