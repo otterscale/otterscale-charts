@@ -1,0 +1,5 @@
+commLabels: {}
+kubevirt:
+  version: "v1.6.2"   
+cdi:
+  version: "v1.63.1"   
