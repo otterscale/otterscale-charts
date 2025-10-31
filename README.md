@@ -1,1 +1,1 @@
-# otterscale-charts
+# OtterScale Charts
