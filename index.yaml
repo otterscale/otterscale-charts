@@ -1,0 +1,119 @@
+apiVersion: v1
+entries:
+  gpu-operator:
+  - apiVersion: v2
+    created: "2025-10-31T03:25:10.462956647Z"
+    dependencies:
+    - condition: gpu-operator.enabled
+      name: gpu-operator
+      repository: ""
+      version: v25.3.2
+    - condition: hami.enabled
+      name: hami
+      repository: ""
+      version: 2.6.1
+    description: GPU operator
+    digest: 62d42e02c64d4d798772c0cd8e8d65fc0666d9f9d25f140872d3eda134820d3a
+    keywords:
+    - vgpu
+    - gpu
+    - compute
+    kubeVersion: '>= 1.30.0'
+    maintainers:
+    - email: bryant_chu@phison.com
+      name: infra-team
+    - email: terry_wu@phison.com
+      name: terry
+    name: gpu-operator
+    urls:
+    - https://github.com/otterscale/charts/releases/download/gpu-operator-1.0.5/gpu-operator-1.0.5.tgz
+    version: 1.0.5
+  infra:
+  - apiVersion: v2
+    created: "2025-10-31T03:25:10.643637942Z"
+    dependencies:
+    - condition: gatekeeper.enabled
+      name: gatekeeper
+      repository: ""
+      version: 3.20.1
+    - condition: kong.enabled
+      name: kong
+      repository: ""
+      version: 2.52.0
+    description: A Helm chart for OtterScale K8S management
+    digest: dc99875b850a25eefb59e84b5c032f632699f19eaa5bf64417aa79a58f3f80c7
+    keywords:
+    - kubernetes
+    - containers
+    - virtualization
+    - storage
+    - gpu-management
+    - maas
+    - juju
+    - ceph
+    - aidaptiv-cache
+    kubeVersion: '>= 1.30.0'
+    maintainers:
+    - email: terrywu25@gmail.com
+      name: terry
+    name: infra
+    urls:
+    - https://github.com/otterscale/charts/releases/download/infra-0.1.0/infra-0.1.0.tgz
+    version: 0.1.0
+  kubevirt-infra:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-10-31T03:25:10.790657413Z"
+    description: A Helm chart to install KubeVirt
+    digest: fed16e15ed053455e9bc8eb11a9dacf96e11e144ec591542ee77c7abfc5a9b47
+    name: kubevirt-infra
+    type: application
+    urls:
+    - https://github.com/otterscale/charts/releases/download/kubevirt-infra-0.1.0/kubevirt-infra-0.1.0.tgz
+    version: 0.1.0
+  model-artifact:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-31T03:25:10.932833986Z"
+    description: A Helm chart for Kubernetes
+    digest: 4c0aa2ffa579631b93907ae77131eda20ee6e2ee055c8afb448c2526fbe715e7
+    name: model-artifact
+    type: application
+    urls:
+    - https://github.com/otterscale/charts/releases/download/model-artifact-0.1.0/model-artifact-0.1.0.tgz
+    version: 0.1.0
+  otterscale:
+  - apiVersion: v2
+    created: "2025-10-31T03:25:11.108117021Z"
+    description: A Helm chart for OtterScale
+    digest: 31605647e42ca5d70747aeeae2e5be7bf3214f643d1270211215dbcbfcea7433
+    keywords:
+    - kubernetes
+    - containers
+    - virtualization
+    - storage
+    - gpu-management
+    - maas
+    - juju
+    - ceph
+    - aidaptiv-cache
+    kubeVersion: '>= 1.30.0'
+    maintainers:
+    - email: terrywu25@gmail.com
+      name: terry
+    name: otterscale
+    urls:
+    - https://github.com/otterscale/charts/releases/download/otterscale-0.1.5/otterscale-0.1.5.tgz
+    version: 0.1.5
+  samba-operator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-31T03:25:11.269019082Z"
+    description: A Helm chart for samba-operator
+    digest: 4f9de827952edb6d269ea5828178211701618a0bcd1271178bb5e51b6b2bb521
+    name: samba-operator
+    type: application
+    urls:
+    - https://github.com/otterscale/charts/releases/download/samba-operator-0.1.0/samba-operator-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-10-31T03:25:11.269025304Z"
